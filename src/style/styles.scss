@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  height: 100vh;
+  background: whitesmoke;
+  padding-top: 1px;
+}
+
+.container {
+  margin: 130px auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  width: 600px;
+  height: 600px;
+}
+
+.button {
+  background: #c5c3c3;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  cursor: pointer;
+  margin: 0.5px;
+}
+
+.button:hover {
+  background: #dcdada;
+  
+}
