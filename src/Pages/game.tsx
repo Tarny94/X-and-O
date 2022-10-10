@@ -19,6 +19,18 @@ const Game = () => {
   const x = "❌";
   const zero = "⭕";
 
+  // Task
+
+  // 1- Create Title Page and style
+  // 2- Create Macth round and style
+  // 3- Create Logic for Match rount
+  // 4- Create Reset button and style
+  // 5- Add function handleReset
+  // 6- Create finish Page and style
+  // 7- Add function for checkIfWin
+  // 8- Add props to finish Page
+  // 9- Check if program work!!!
+
   const checkIfClicked = (button: any) => {
     if (button === x || button === zero) {
       return true;
