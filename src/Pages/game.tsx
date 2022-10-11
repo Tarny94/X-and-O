@@ -55,7 +55,7 @@ const Game = () => {
     if (clickNr === 8) {
       setIsdraw(true);
     }
-    console.log(clickNr);
+
     if (istrue) {
       button(x);
 
