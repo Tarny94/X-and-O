@@ -1,5 +1,6 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
-import React, { useState } from "react";
+import { click } from "@testing-library/user-event/dist/click";
+import React, { useState, useEffect } from "react";
+import Title from "../Pages/Title";
 import "../style/styles.scss";
 
 const Game = () => {
@@ -12,24 +13,35 @@ const Game = () => {
   const [buttonSeven, setButtonSeven] = useState("😏");
   const [buttonEight, setButtonEight] = useState("😧");
   const [buttonNine, setButtonNine] = useState("😯");
-
+  const [turn, setTurn] = useState(``);
   const [istrue, setIstrue] = useState(true);
-  const [disable, setDisable] = useState(false);
+  const [wins, setWins] = useState(false);
+  const [clickNr, setClickNr] = useState(0);
+  const [isdraw, setIsdraw] = useState(false);
+
+  const [xScore, setXScore] = useState(0);
+  const [oScore, setOScore] = useState(0);
 
   const x = "❌";
   const zero = "⭕";
 
-  // Task
+  useEffect(() => {
+    checkIfWin();
+    if (istrue) {
+      return setTurn(`It's ${x} round...`);
+    }
+    return setTurn(`It's ${zero} round...`);
+  }, [istrue]);
 
-  // 1- Create Title Page and style
-  // 2- Create Macth round and style
-  // 3- Create Logic for Match rount
-  // 4- Create Reset button and style
-  // 5- Add function handleReset
-  // 6- Create finish Page and style
-  // 7- Add function for checkIfWin
-  // 8- Add props to finish Page
-  // 9- Check if program work!!!
+  useEffect(() => {
+    if (wins) {
+      if (istrue) {
+        setOScore(oScore + 1);
+      } else {
+        setXScore(xScore + 1);
+      }
+    }
+  }, [wins]);
 
   const checkIfClicked = (button: any) => {
     if (button === x || button === zero) {
@@ -39,18 +51,95 @@ const Game = () => {
   };
 
   const handleButton = (button: any) => {
+    setClickNr(clickNr + 1);
+    if (clickNr === 8) {
+      setIsdraw(true);
+    }
+    console.log(clickNr);
     if (istrue) {
       button(x);
+
       setIstrue(false);
     } else {
       button(zero);
+
       setIstrue(true);
+    }
+  };
+
+  const winner = () => {
+    let winners = `🎊 ${!istrue ? x : zero} Wins!`;
+    return (
+      <div className="winner-container">
+        <div className="winner" onClick={handleReset}>
+          {winners}
+        </div>
+      </div>
+    );
+  };
+
+  const isDraw = () => {
+    if (isdraw) {
+      return (
+        <div className="winner-container">
+          <div className="winner" onClick={handleReset}>
+            Draw 😧
+          </div>
+        </div>
+      );
+    }
+  };
+
+  const handleReset = () => {
+    setButtonOne("😉");
+    setButtonTwo("🌞");
+    setButtonThree("😁");
+    setButtonFour("😎");
+    setButtonFive("😊");
+    setButtonSix("😉");
+    setButtonSeven("😏");
+    setButtonEight("😧");
+    setButtonNine("😎");
+    setIstrue(true);
+    setWins(false);
+    setClickNr(0);
+    setIsdraw(false);
+  };
+
+  const checkIfWin = () => {
+    if (buttonOne === buttonTwo && buttonOne === buttonThree) {
+      return setWins(true);
+    } else if (buttonOne === buttonFour && buttonOne === buttonSeven) {
+      return setWins(true);
+    } else if (buttonOne === buttonFive && buttonOne === buttonNine) {
+      return setWins(true);
+    } else if (buttonTwo === buttonFive && buttonTwo === buttonEight) {
+      return setWins(true);
+    } else if (buttonThree === buttonFive && buttonThree === buttonSeven) {
+      return setWins(true);
+    } else if (buttonThree === buttonSix && buttonThree === buttonNine) {
+      return setWins(true);
+    } else if (buttonSix === buttonFive && buttonSix === buttonFour) {
+      return setWins(true);
+    } else if (buttonNine === buttonEight && buttonNine === buttonSeven) {
+      return setWins(true);
     }
   };
 
   return (
     <div className="App">
+      <Title
+        xScore={xScore}
+        oScore={oScore}
+        setScore={() => {
+          setOScore(0);
+          setXScore(0);
+        }}
+      />
+      <div className="round-container">{turn}</div>
+
       <div className="container">
+        {wins ? winner() : isDraw()}
         <div
           className="button button1"
           onClick={() => {
@@ -149,6 +238,11 @@ const Game = () => {
           }}
         >
           {buttonNine}
+        </div>
+      </div>
+      <div className="reset-button">
+        <div className="reset" onClick={handleReset}>
+          🔃
         </div>
       </div>
     </div>

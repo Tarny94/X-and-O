@@ -1,14 +1,13 @@
 import React from "react";
-import Game from "./Pages/game";
-import Title from "./Pages/Title";
+import Navigate from "./Pages/Navigate";
 import "./style/styles.scss";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <Title />
-      <Game />
-    </div>
+    <BrowserRouter>
+      <Navigate />
+    </BrowserRouter>
   );
 }
 
