@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Title from "../Pages/Title";
+import Title from "./Title";
 import "../style/styles.scss";
 
 const Game = () => {
