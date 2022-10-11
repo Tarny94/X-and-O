@@ -244,6 +244,15 @@ const Game = () => {
           🔃
         </div>
       </div>
+      <div className="about-container">
+        <img
+          src="https://media-exp1.licdn.com/dms/image/C5603AQFcHRAARTK6og/profile-displayphoto-shrink_100_100/0/1656096006478?e=1671062400&v=beta&t=aB33V7zSs75m48sh6luBJtvqxctSkPKKIld6hZr8ixw"
+          alt="Profile"
+          width="50px"
+          height="50px"
+        />
+        <p className="about-message">Created by Tarnicer Alexandru </p>
+      </div>
     </div>
   );
 };
