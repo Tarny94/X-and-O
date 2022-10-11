@@ -1,4 +1,3 @@
-import { click } from "@testing-library/user-event/dist/click";
 import React, { useState, useEffect } from "react";
 import Title from "../Pages/Title";
 import "../style/styles.scss";
