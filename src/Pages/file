@@ -1,0 +1,59 @@
+// const verification = (num: number) => {
+//   console.log(" randmo: ", num);
+
+//   if (num === 1) {
+//     if (!checkIfClicked(buttonOne)) {
+//       handleButton(setButtonOne);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 2) {
+//     if (!checkIfClicked(buttonTwo)) {
+//       handleButton(setButtonTwo);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 3) {
+//     if (!checkIfClicked(buttonThree)) {
+//       handleButton(setButtonThree);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 4) {
+//     if (!checkIfClicked(buttonFour)) {
+//       handleButton(setButtonFour);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 5) {
+//     if (!checkIfClicked(buttonFive)) {
+//       handleButton(setButtonFive);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 6) {
+//     if (!checkIfClicked(buttonSix)) {
+//       handleButton(setButtonSix);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 7) {
+//     if (!checkIfClicked(buttonSeven)) {
+//       handleButton(setButtonSeven);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 8) {
+//     if (!checkIfClicked(buttonEight)) {
+//       handleButton(setButtonEight);
+//     } else {
+//       chooseComputer();
+//     }
+//   } else if (num === 9) {
+//     if (!checkIfClicked(buttonNine)) {
+//       handleButton(setButtonNine);
+//     } else {
+//       chooseComputer();
+//     }
+//   }
+// };

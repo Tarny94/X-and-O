@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import "../style/styles.scss";
 
-const Game = () => {
+const Computer = () => {
   const [buttonOne, setButtonOne] = useState("😁");
   const [buttonTwo, setButtonTwo] = useState("🌞");
   const [buttonThree, setButtonThree] = useState("😎");
@@ -14,35 +14,153 @@ const Game = () => {
   const [buttonNine, setButtonNine] = useState("😯");
   const [turn, setTurn] = useState(``);
   const [istrue, setIstrue] = useState(true);
-  const [wins, setWins] = useState(false);
   const [clickNr, setClickNr] = useState(0);
   const [isdraw, setIsdraw] = useState(false);
-
   const [xScore, setXScore] = useState(0);
   const [oScore, setOScore] = useState(0);
+  const [whoWin, setWhoWin] = useState("");
 
   const x = "❌";
   const zero = "⭕";
-  //1 - Create function Random number between 1 and 6 inclusive
-  //2 - Create verificate Random number
+  //Clean all mess code
+  const checkIfWin = () => {
+    if (buttonOne === buttonTwo && buttonOne === buttonThree) {
+      return true;
+    } else if (buttonOne === buttonFour && buttonOne === buttonSeven) {
+      return true;
+    } else if (buttonOne === buttonFive && buttonOne === buttonNine) {
+      return true;
+    } else if (buttonTwo === buttonFive && buttonTwo === buttonEight) {
+      return true;
+    } else if (buttonThree === buttonFive && buttonThree === buttonSeven) {
+      return true;
+    } else if (buttonThree === buttonSix && buttonThree === buttonNine) {
+      return true;
+    } else if (buttonSix === buttonFive && buttonSix === buttonFour) {
+      return true;
+    } else if (buttonNine === buttonEight && buttonNine === buttonSeven) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   useEffect(() => {
-    checkIfWin();
     if (istrue) {
+      setWhoWin(x);
       return setTurn(`It's ${x} round...`);
     }
-    return setTurn(`It's ${zero} round...`);
+    setTurn(`It's ${zero} round...`);
+    setWhoWin(zero);
   }, [istrue]);
 
   useEffect(() => {
-    if (wins) {
+    if (checkIfWin()) {
       if (istrue) {
         setOScore(oScore + 1);
       } else {
         setXScore(xScore + 1);
       }
     }
-  }, [wins]);
+  }, [checkIfWin()]);
+
+  const getRandomNumber = () => {
+    return Math.floor(Math.random() * 9) + 1;
+  };
+
+  const checkifDraw = () => {
+    if (clickNr === 9) {
+      setIsdraw(true);
+    }
+  };
+
+  const PerformZero = () => {
+    checkIfWin();
+    checkifDraw();
+
+    let timer = Math.floor(Math.random() * 2000) + 500;
+
+    if (clickNr % 2 !== 0) {
+      setIstrue(false);
+      setTimeout(() => {
+        chooseComputer();
+      }, timer);
+    } else if (clickNr % 2 === 0) {
+      setIstrue(true);
+    }
+  };
+
+  useEffect(() => {
+    if (!checkIfWin()) {
+      PerformZero();
+    } else {
+      return;
+    }
+  }, [clickNr]);
+
+  const setValueInterval = (button: any) => {
+    checkIfWin();
+
+    button(zero);
+
+    if (!checkIfWin()) {
+      setClickNr(clickNr + 1);
+    }
+  };
+
+  const chooseComputer = () => {
+    checkIfWin();
+    if (!checkIfWin()) {
+      verification();
+    } else {
+      return "";
+    }
+  };
+
+  const verification = () => {
+    if (!checkIfWin() && clickNr < 9) {
+      let num = getRandomNumber();
+      console.log(" randmo: ", num);
+
+      if (num === 1) {
+        checkIfClicked(buttonOne)
+          ? verification()
+          : setValueInterval(setButtonOne);
+      } else if (num === 2) {
+        checkIfClicked(buttonTwo)
+          ? verification()
+          : setValueInterval(setButtonTwo);
+      } else if (num === 3) {
+        checkIfClicked(buttonThree)
+          ? verification()
+          : setValueInterval(setButtonThree);
+      } else if (num === 4) {
+        checkIfClicked(buttonFour)
+          ? verification()
+          : setValueInterval(setButtonFour);
+      } else if (num === 5) {
+        checkIfClicked(buttonFive)
+          ? verification()
+          : setValueInterval(setButtonFive);
+      } else if (num === 6) {
+        checkIfClicked(buttonSix)
+          ? verification()
+          : setValueInterval(setButtonSix);
+      } else if (num === 7) {
+        checkIfClicked(buttonSeven)
+          ? verification()
+          : setValueInterval(setButtonSeven);
+      } else if (num === 8) {
+        checkIfClicked(buttonEight)
+          ? verification()
+          : setValueInterval(setButtonEight);
+      } else if (num === 9) {
+        checkIfClicked(buttonNine)
+          ? verification()
+          : setValueInterval(setButtonNine);
+      }
+    }
+  };
 
   const checkIfClicked = (button: any) => {
     if (button === x || button === zero) {
@@ -52,24 +170,25 @@ const Game = () => {
   };
 
   const handleButton = (button: any) => {
-    setClickNr(clickNr + 1);
-    if (clickNr === 8) {
-      setIsdraw(true);
+    if (!istrue) {
+      return "";
     }
-
-    if (istrue) {
-      button(x);
-
-      setIstrue(false);
-    } else {
-      button(zero);
-
-      setIstrue(true);
+    checkIfWin();
+    if (!checkIfWin()) {
+      if (istrue) {
+        button(x);
+      }
+    }
+    if (!checkIfWin()) {
+      setClickNr(clickNr + 1);
     }
   };
 
+  if (!istrue) {
+  }
+
   const winner = () => {
-    let winners = `🎊 ${!istrue ? x : zero} Wins!`;
+    let winners = `🎊 ${whoWin} Wins!`;
     return (
       <div className="winner-container">
         <div className="winner" onClick={handleReset}>
@@ -102,29 +221,8 @@ const Game = () => {
     setButtonEight("😧");
     setButtonNine("😎");
     setIstrue(true);
-    setWins(false);
     setClickNr(0);
     setIsdraw(false);
-  };
-
-  const checkIfWin = () => {
-    if (buttonOne === buttonTwo && buttonOne === buttonThree) {
-      return setWins(true);
-    } else if (buttonOne === buttonFour && buttonOne === buttonSeven) {
-      return setWins(true);
-    } else if (buttonOne === buttonFive && buttonOne === buttonNine) {
-      return setWins(true);
-    } else if (buttonTwo === buttonFive && buttonTwo === buttonEight) {
-      return setWins(true);
-    } else if (buttonThree === buttonFive && buttonThree === buttonSeven) {
-      return setWins(true);
-    } else if (buttonThree === buttonSix && buttonThree === buttonNine) {
-      return setWins(true);
-    } else if (buttonSix === buttonFive && buttonSix === buttonFour) {
-      return setWins(true);
-    } else if (buttonNine === buttonEight && buttonNine === buttonSeven) {
-      return setWins(true);
-    }
   };
 
   return (
@@ -140,7 +238,7 @@ const Game = () => {
       <div className="round-container">{turn}</div>
 
       <div className="container">
-        {wins ? winner() : isDraw()}
+        {checkIfWin() ? winner() : isDraw()}
         <div
           className="button button1"
           onClick={() => {
@@ -259,4 +357,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default Computer;
