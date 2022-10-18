@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Title from "./Title";
+import { useNavigate } from "react-router-dom";
 import "../style/styles.scss";
 
 const Computer = () => {
@@ -22,6 +23,7 @@ const Computer = () => {
 
   const x = "❌";
   const zero = "⭕";
+  const navigate = useNavigate();
 
   const checkIfWin = () => {
     if (buttonOne === buttonTwo && buttonOne === buttonThree) {
@@ -179,9 +181,6 @@ const Computer = () => {
     }
   };
 
-  if (!istrue) {
-  }
-
   const winner = () => {
     let winners = `🎊 ${whoWin} Wins!`;
     return (
@@ -335,7 +334,13 @@ const Computer = () => {
         </div>
       </div>
       <div className="reset-button">
-        <div className="reset" title="Back to first page">
+        <div
+          className="reset"
+          title="Back to first page"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           ⬅️
         </div>
         <div className="reset" title="Reset game" onClick={handleReset}>

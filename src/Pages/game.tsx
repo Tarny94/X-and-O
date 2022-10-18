@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Title from "./Title";
 import "../style/styles.scss";
 
@@ -23,8 +24,7 @@ const Game = () => {
 
   const x = "❌";
   const zero = "⭕";
-  //1 - Create function Random number between 1 and 6 inclusive
-  //2 - Create verificate Random number
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkIfWin();
@@ -242,6 +242,15 @@ const Game = () => {
         </div>
       </div>
       <div className="reset-button">
+        <div
+          className="reset"
+          title="Back to first page"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          ⬅️
+        </div>
         <div className="reset" onClick={handleReset}>
           🔃
         </div>
