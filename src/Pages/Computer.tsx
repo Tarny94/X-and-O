@@ -85,7 +85,348 @@ const Computer = ({ playPlayer }: any) => {
     if (clickNr % 2 !== 0 && playPlayer === false) {
       setIstrue(false);
       setTimeout(() => {
-        chooseComputer();
+        if (!checkIfClicked(buttonFive)) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonTwo === zero &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonThree === zero &&
+          !checkIfClicked(buttonTwo)
+        ) {
+          setButtonTwo(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === zero &&
+          buttonThree === zero &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonTwo === x &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonThree === x &&
+          !checkIfClicked(buttonTwo)
+        ) {
+          setButtonTwo(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === x &&
+          buttonThree === x &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === zero &&
+          buttonFive === zero &&
+          !checkIfClicked(buttonSix)
+        ) {
+          setButtonSix(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === zero &&
+          buttonSix === zero &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === zero &&
+          buttonSix === zero &&
+          !checkIfClicked(buttonFour)
+        ) {
+          setButtonFour(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === x &&
+          buttonFive === x &&
+          !checkIfClicked(buttonSix)
+        ) {
+          setButtonSix(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === x &&
+          buttonSix === x &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === x &&
+          buttonSix === x &&
+          !checkIfClicked(buttonFour)
+        ) {
+          setButtonFour(zero);
+          increseNrClick();
+        } else if (
+          buttonSeven === zero &&
+          buttonEight === zero &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonSeven === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonEight)
+        ) {
+          setButtonEight(zero);
+          increseNrClick();
+        } else if (
+          buttonEight === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonSeven === x &&
+          buttonEight === x &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonSeven === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonEight)
+        ) {
+          setButtonEight(zero);
+          increseNrClick();
+        } else if (
+          buttonEight === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonFour === zero &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonSeven === zero &&
+          !checkIfClicked(buttonFour)
+        ) {
+          setButtonFour(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === zero &&
+          buttonSeven === zero &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonFour === x &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonSeven === x &&
+          !checkIfClicked(buttonFour)
+        ) {
+          setButtonFour(zero);
+          increseNrClick();
+        } else if (
+          buttonFour === x &&
+          buttonSeven === x &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === zero &&
+          buttonFive === zero &&
+          !checkIfClicked(buttonEight)
+        ) {
+          setButtonEight(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === zero &&
+          buttonEight === zero &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonEight === zero &&
+          buttonFive === zero &&
+          !checkIfClicked(buttonTwo)
+        ) {
+          setButtonTwo(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === x &&
+          buttonFive === x &&
+          !checkIfClicked(buttonEight)
+        ) {
+          setButtonEight(zero);
+          increseNrClick();
+        } else if (
+          buttonTwo === x &&
+          buttonEight === x &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonEight === x &&
+          buttonFive === x &&
+          !checkIfClicked(buttonTwo)
+        ) {
+          setButtonTwo(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === zero &&
+          buttonSix === zero &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonSix)
+        ) {
+          setButtonSix(zero);
+          increseNrClick();
+        } else if (
+          buttonSix === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === x &&
+          buttonSix === x &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonSix)
+        ) {
+          setButtonSix(zero);
+          increseNrClick();
+        } else if (
+          buttonSix === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonFive === zero &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === zero &&
+          buttonNine === zero &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonFive === x &&
+          !checkIfClicked(buttonNine)
+        ) {
+          setButtonNine(zero);
+          increseNrClick();
+        } else if (
+          buttonOne === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === x &&
+          buttonNine === x &&
+          !checkIfClicked(buttonOne)
+        ) {
+          setButtonOne(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === zero &&
+          buttonFive === zero &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === zero &&
+          buttonSeven === zero &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === zero &&
+          buttonSeven === zero &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === x &&
+          buttonFive === x &&
+          !checkIfClicked(buttonSeven)
+        ) {
+          setButtonSeven(zero);
+          increseNrClick();
+        } else if (
+          buttonThree === x &&
+          buttonSeven === x &&
+          !checkIfClicked(buttonFive)
+        ) {
+          setButtonFive(zero);
+          increseNrClick();
+        } else if (
+          buttonFive === x &&
+          buttonSeven === x &&
+          !checkIfClicked(buttonThree)
+        ) {
+          setButtonThree(zero);
+          increseNrClick();
+        } else {
+          chooseComputer();
+        }
       }, timer);
     } else if (clickNr % 2 === 0) {
       setIstrue(true);
@@ -102,12 +443,16 @@ const Computer = ({ playPlayer }: any) => {
     }
   }, [clickNr]);
 
-  const setValueInterval = (button: any) => {
-    checkIfWin();
-    button(zero);
+  const increseNrClick = () => {
     if (!checkIfWin()) {
       setClickNr(clickNr + 1);
     }
+  };
+
+  const setValueInterval = (button: any) => {
+    checkIfWin();
+    button(zero);
+    increseNrClick();
   };
 
   const chooseComputer = () => {
@@ -181,13 +526,13 @@ const Computer = ({ playPlayer }: any) => {
       if (istrue) {
         button(x);
       }
-      setClickNr(clickNr + 1);
+      increseNrClick();
     }
     if (playPlayer) {
       if (!istrue) {
         button(zero);
       }
-      setClickNr(clickNr + 1);
+      increseNrClick();
     }
   };
 
@@ -227,6 +572,7 @@ const Computer = ({ playPlayer }: any) => {
     setIstrue(true);
     setClickNr(0);
     setIsdraw(false);
+
   };
 
   return (
