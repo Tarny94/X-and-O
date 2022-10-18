@@ -22,7 +22,7 @@ const Computer = () => {
 
   const x = "❌";
   const zero = "⭕";
-  //Clean all mess code
+
   const checkIfWin = () => {
     if (buttonOne === buttonTwo && buttonOne === buttonThree) {
       return true;
@@ -57,9 +57,9 @@ const Computer = () => {
   useEffect(() => {
     if (checkIfWin()) {
       if (istrue) {
-        setOScore(oScore + 1);
-      } else {
         setXScore(xScore + 1);
+      } else {
+        setOScore(oScore + 1);
       }
     }
   }, [checkIfWin()]);
@@ -100,16 +100,13 @@ const Computer = () => {
 
   const setValueInterval = (button: any) => {
     checkIfWin();
-
     button(zero);
-
     if (!checkIfWin()) {
       setClickNr(clickNr + 1);
     }
   };
 
   const chooseComputer = () => {
-    checkIfWin();
     if (!checkIfWin()) {
       verification();
     } else {
@@ -178,8 +175,6 @@ const Computer = () => {
       if (istrue) {
         button(x);
       }
-    }
-    if (!checkIfWin()) {
       setClickNr(clickNr + 1);
     }
   };
@@ -340,7 +335,10 @@ const Computer = () => {
         </div>
       </div>
       <div className="reset-button">
-        <div className="reset" onClick={handleReset}>
+        <div className="reset" title="Back to first page">
+          ⬅️
+        </div>
+        <div className="reset" title="Reset game" onClick={handleReset}>
           🔃
         </div>
       </div>

@@ -104,10 +104,9 @@
 
 .reset-button{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   font-size: 35px;
-
   margin: 0 auto;
   width: 600px;
 }
@@ -182,6 +181,7 @@
   justify-content: space-around;
   align-items: center;
   border: 1px solid #e4e2e2 ;
+ 
  }
 
  .choose-button{
@@ -192,6 +192,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 39px;
+  position: relative;
  }
 
  .choose-button:hover {
