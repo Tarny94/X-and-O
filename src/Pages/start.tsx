@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/styles.scss";
 import Title from "./Title";
 
-const StartPage = () => {
+const StartPage = ({ setPlayPlayer }: any) => {
   const navigate = useNavigate();
+
   return (
     <>
       <Title />
@@ -14,7 +15,8 @@ const StartPage = () => {
             className="choose-1vs1 choose-button"
             title="Player vs Player"
             onClick={() => {
-              navigate("/game");
+              setPlayPlayer(true);
+              navigate("/computer");
             }}
           >
             🎭{" "}
@@ -23,6 +25,7 @@ const StartPage = () => {
             className="choose-pc choose-button"
             title="Player vs Computer"
             onClick={() => {
+              setPlayPlayer(false);
               navigate("/computer");
             }}
           >

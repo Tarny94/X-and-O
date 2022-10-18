@@ -3,7 +3,7 @@ import Title from "./Title";
 import { useNavigate } from "react-router-dom";
 import "../style/styles.scss";
 
-const Computer = () => {
+const Computer = ({ playPlayer }: any) => {
   const [buttonOne, setButtonOne] = useState("😁");
   const [buttonTwo, setButtonTwo] = useState("🌞");
   const [buttonThree, setButtonThree] = useState("😎");
@@ -82,13 +82,15 @@ const Computer = () => {
 
     let timer = Math.floor(Math.random() * 2000) + 500;
 
-    if (clickNr % 2 !== 0) {
+    if (clickNr % 2 !== 0 && playPlayer === false) {
       setIstrue(false);
       setTimeout(() => {
         chooseComputer();
       }, timer);
     } else if (clickNr % 2 === 0) {
       setIstrue(true);
+    } else if (clickNr % 2 !== 0 && playPlayer === true) {
+      setIstrue(false);
     }
   };
 
@@ -119,7 +121,6 @@ const Computer = () => {
   const verification = () => {
     if (!checkIfWin() && clickNr < 9) {
       let num = getRandomNumber();
-      console.log(" randmo: ", num);
 
       if (num === 1) {
         checkIfClicked(buttonOne)
@@ -169,13 +170,22 @@ const Computer = () => {
   };
 
   const handleButton = (button: any) => {
-    if (!istrue) {
-      return "";
-    }
     checkIfWin();
+
+    if (!playPlayer) {
+      if (!istrue) {
+        return "";
+      }
+    }
     if (!checkIfWin()) {
       if (istrue) {
         button(x);
+      }
+      setClickNr(clickNr + 1);
+    }
+    if (playPlayer) {
+      if (!istrue) {
+        button(zero);
       }
       setClickNr(clickNr + 1);
     }
